@@ -1,6 +1,6 @@
 <?php
 require_once("model-albums.php");
-require_once("model-groups.php"); // Include to access selectGroups()
+require_once("model-groups.php");
 $pageTitle = "Albums";
 include "view-header.php";
 
@@ -36,7 +36,6 @@ $albums = selectAlbums();
     </table>
 </div>
 
-<!-- Add Album Modal -->
 <div class="modal fade" id="addAlbumModal" tabindex="-1" aria-labelledby="addAlbumModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
