@@ -53,4 +53,20 @@ function deleteAlbum($albumId) {
     $stmt->close();
     $conn->close();
 }
+
+function selectAlbumsByGroup($groupId) {
+    $conn = get_db_connection();
+    $stmt = $conn->prepare("
+        SELECT `Albums`.*, `Groups`.`Name` AS GroupName
+        FROM `Albums`
+        JOIN `Groups` ON `Albums`.`GroupID` = `Groups`.`GroupID`
+        WHERE `Albums`.`GroupID` = ?
+    ");
+    $stmt->bind_param("i", $groupId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    $conn->close();
+    return $result;
+}
 ?>
