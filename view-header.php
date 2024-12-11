@@ -7,17 +7,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Background Colors */
-        body, .navbar, .footer, .container {
+        body {
             background-color: #f9f2ff; /* Light pastel purple */
             color: #000; /* Black text */
         }
 
+        .navbar, .footer {
+            background-color: #e6d9ff; /* Slightly darker purple */
+            color: #000;
+        }
+
         /* Add spacing around the content */
         .container {
-            max-width: 1200px; /* Limit the width of the content */
-            margin: 20px auto; /* Center content and add space on top/bottom */
-            padding: 20px; /* Add padding inside the container */
-            border-radius: 8px; /* Rounded corners for softer appearance */
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f2ff; /* Light pastel purple */
+            border-radius: 8px; /* Rounded corners */
         }
 
         /* Navbar links */
@@ -26,16 +32,17 @@
             color: #000 !important; /* Black navbar links */
         }
 
-        /* Table header styling */
-        table thead th {
-            color: #000; /* Black text */
-        }
-
         /* Footer styling */
         .footer {
             text-align: center;
             padding: 10px 0;
             margin-top: 20px;
+            color: #000;
+        }
+
+        /* Table header styling */
+        table thead th {
+            color: #000; /* Black text */
         }
     </style>
 </head>
