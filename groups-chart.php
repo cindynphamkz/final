@@ -3,10 +3,8 @@ require_once("model-albums.php");
 $pageTitle = "Group Chart";
 include "view-header.php";
 
-// Fetch album counts by group
 $data = countAlbumsByGroup();
 
-// Prepare data for the chart
 $groupNames = [];
 $fullAlbumCounts = [];
 $miniAlbumCounts = [];
@@ -24,13 +22,11 @@ while ($row = $data->fetch_assoc()) {
 <!-- Include Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Prepare data for the chart
     const groupNames = <?php echo json_encode($groupNames); ?>;
     const fullAlbumCounts = <?php echo json_encode($fullAlbumCounts); ?>;
     const miniAlbumCounts = <?php echo json_encode($miniAlbumCounts); ?>;
     const singleAlbumCounts = <?php echo json_encode($singleAlbumCounts); ?>;
 
-    // Render the chart
     const ctx = document.getElementById('groupChart').getContext('2d');
     const groupChart = new Chart(ctx, {
         type: 'bar',
