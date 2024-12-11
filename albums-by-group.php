@@ -5,15 +5,12 @@ require_once("model-groups.php");
 $pageTitle = "Albums by Group";
 include "view-header.php";
 
-// Get the GroupID from the query parameter (if provided)
 $groupId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// If a specific group is selected, fetch only its albums
 if ($groupId > 0) {
     $group = getGroupById($groupId);
     $albums = selectAlbumsByGroup($groupId);
 
-    // Check if the group exists
     if (!$group) {
         echo "<p class='text-center mt-4'>Group not found.</p>";
         include "view-footer.php";
@@ -44,7 +41,6 @@ if ($groupId > 0) {
         </table></div>";
 
 } else {
-    // No specific group selected; fetch all albums grouped by group
     $groups = selectGroups();
 
     echo "<h1 class='text-center my-4'>Albums by Group</h1>";
