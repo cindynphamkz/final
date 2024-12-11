@@ -31,7 +31,7 @@ $groups = selectGroups();
         <?php endwhile; ?>
     </tbody>
 </table>
-<!-- Add Group Modal -->
+
 <div class="modal fade" id="addGroupModal" tabindex="-1" aria-labelledby="addGroupModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
