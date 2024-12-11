@@ -5,31 +5,36 @@ include "view-header.php";
 
 $albums = selectAlbums();
 ?>
-<h1>Albums</h1>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAlbumModal">Add New Album</button>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Album Type</th>
-            <th>Group</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php while ($album = $albums->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($album['Title']); ?></td>
-            <td><?php echo htmlspecialchars($album['AlbumType']); ?></td>
-            <td><?php echo htmlspecialchars($album['GroupName']); ?></td>
-            <td>
-                <a href="edit-album.php?id=<?php echo $album['AlbumID']; ?>" class="btn btn-warning">Edit</a>
-                <a href="delete-album.php?id=<?php echo $album['AlbumID']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this album?')">Delete</a>
-            </td>
-        </tr>
-        <?php endwhile; ?>
-    </tbody>
-</table>
+<h1 class="text-center my-4">Albums</h1>
+<div class="text-end mb-3">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAlbumModal">Add New Album</button>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Album Type</th>
+                <th>Group</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($album = $albums->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($album['Title']); ?></td>
+                <td><?php echo htmlspecialchars($album['AlbumType']); ?></td>
+                <td><?php echo htmlspecialchars($album['GroupName']); ?></td>
+                <td>
+                    <a href="edit-album.php?id=<?php echo $album['AlbumID']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="delete-album.php?id=<?php echo $album['AlbumID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this album?')">Delete</a>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+</div>
+
 <!-- Add Album Modal -->
 <div class="modal fade" id="addAlbumModal" tabindex="-1" aria-labelledby="addAlbumModalLabel" aria-hidden="true">
     <div class="modal-dialog">
