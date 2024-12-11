@@ -1,12 +1,23 @@
 <?php
 require_once("model-albums.php");
 require_once("model-groups.php");
+
 $pageTitle = "Albums by Group";
 include "view-header.php";
 
+// Get the GroupID from the query parameter
 $groupId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-$albums = selectAlbumsByGroup($groupId);
+
+// Fetch the group and albums data
 $group = getGroupById($groupId);
+$albums = selectAlbumsByGroup($groupId);
+
+// Check if the group exists
+if (!$group) {
+    echo "<p class='text-center'>Group not found.</p>";
+    include "view-footer.php";
+    exit();
+}
 ?>
 <h1>Albums by <?php echo htmlspecialchars($group['Name']); ?></h1>
 <table class="table">
