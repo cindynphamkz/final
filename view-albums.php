@@ -1,5 +1,6 @@
 <?php
 require_once("model-albums.php");
+require_once("model-groups.php"); // Include to access selectGroups()
 $pageTitle = "Albums";
 include "view-header.php";
 
@@ -53,11 +54,17 @@ $albums = selectAlbums();
                     <br>
                     <label for="groupid">Group:</label>
                     <select id="groupid" name="groupid" class="form-control" required>
+                        <option value="" disabled selected>Select a group</option>
                         <?php
                         $groups = selectGroups();
-                        while ($group = $groups->fetch_assoc()): ?>
-                            <option value="<?php echo $group['GroupID']; ?>"><?php echo htmlspecialchars($group['Name']); ?></option>
-                        <?php endwhile; ?>
+                        if ($groups->num_rows > 0) {
+                            while ($group = $groups->fetch_assoc()) {
+                                echo "<option value=\"" . $group['GroupID'] . "\">" . htmlspecialchars($group['Name']) . "</option>";
+                            }
+                        } else {
+                            echo "<option disabled>No groups available</option>";
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="modal-footer">
