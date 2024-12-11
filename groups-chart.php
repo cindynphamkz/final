@@ -8,13 +8,17 @@ $data = countAlbumsByGroup();
 
 // Prepare data for the chart
 $groupNames = [];
-$albumCounts = [];
+$fullAlbumCounts = [];
+$miniAlbumCounts = [];
+$singleAlbumCounts = [];
 while ($row = $data->fetch_assoc()) {
     $groupNames[] = $row['GroupName'];
-    $albumCounts[] = $row['AlbumCount'];
+    $fullAlbumCounts[] = $row['FullAlbumCount'];
+    $miniAlbumCounts[] = $row['MiniAlbumCount'];
+    $singleAlbumCounts[] = $row['SingleAlbumCount'];
 }
 ?>
-<h1 class="text-center my-4">Albums by Group</h1>
+<h1 class="text-center my-4">Albums by Group and Type</h1>
 <canvas id="groupChart" width="400" height="200"></canvas>
 
 <!-- Include Chart.js -->
@@ -22,7 +26,9 @@ while ($row = $data->fetch_assoc()) {
 <script>
     // Prepare data for the chart
     const groupNames = <?php echo json_encode($groupNames); ?>;
-    const albumCounts = <?php echo json_encode($albumCounts); ?>;
+    const fullAlbumCounts = <?php echo json_encode($fullAlbumCounts); ?>;
+    const miniAlbumCounts = <?php echo json_encode($miniAlbumCounts); ?>;
+    const singleAlbumCounts = <?php echo json_encode($singleAlbumCounts); ?>;
 
     // Render the chart
     const ctx = document.getElementById('groupChart').getContext('2d');
@@ -30,13 +36,29 @@ while ($row = $data->fetch_assoc()) {
         type: 'bar',
         data: {
             labels: groupNames,
-            datasets: [{
-                label: 'Number of Albums',
-                data: albumCounts,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
+            datasets: [
+                {
+                    label: 'Full Albums',
+                    data: fullAlbumCounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Mini Albums',
+                    data: miniAlbumCounts,
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Single Albums',
+                    data: singleAlbumCounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }
+            ]
         },
         options: {
             scales: {
