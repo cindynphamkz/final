@@ -7,25 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Background Colors */
-        body {
-            background-color: #f9f2ff; /* Very light pastel purple */
+        body, .navbar, .footer, .container {
+            background-color: #f9f2ff; /* Light pastel purple */
             color: #000; /* Black text */
         }
-        .navbar, .footer {
-            background-color: #fffdeb; /* Very light pastel yellow */
-        }
+
+        /* Add spacing around the content */
         .container {
             max-width: 1200px; /* Limit the width of the content */
             margin: 20px auto; /* Center content and add space on top/bottom */
-            padding: 20px; /* Add padding around the edges */
-            background-color: #fffdeb; /* Very light pastel yellow background for content */
-            border-radius: 8px; /* Rounded corners */
+            padding: 20px; /* Add padding inside the container */
+            border-radius: 8px; /* Rounded corners for softer appearance */
         }
 
-        /* Style navbar links */
+        /* Navbar links */
         .navbar-nav .nav-link {
             text-align: center;
-            color: #000 !important; /* Ensure black text for navbar links */
+            color: #000 !important; /* Black navbar links */
+        }
+
+        /* Table header styling */
+        table thead th {
+            color: #000; /* Black text */
         }
 
         /* Footer styling */
@@ -34,16 +37,11 @@
             padding: 10px 0;
             margin-top: 20px;
         }
-
-        /* Table header styling */
-        table thead th {
-            color: #000; /* Black text */
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <nav class="navbar navbar-expand-lg navbar-light mb-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
