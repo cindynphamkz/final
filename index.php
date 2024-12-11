@@ -18,13 +18,13 @@ include "view-header.php";
     <!-- aespa -->
     <div class="col-md-4 text-center">
         <h3>aespa</h3>
-        <img src="images/aespa.jpg" class="img-fluid rounded" alt="aespa">
+        <img src="https://www.kiacenter.com/assets/img/Static_TM-ArtistImage_2426x1365_Aespa_2025_National_V2-1be89b680e.jpg" class="img-fluid rounded" alt="aespa">
     </div>
 
     <!-- IVE -->
     <div class="col-md-4 text-center">
         <h3>IVE</h3>
-        <img src="images/ive.jpg" class="img-fluid rounded" alt="IVE">
+        <img src="https://dynamicmedia.livenationinternational.com/r/r/m/dddc9379-ee66-4dcb-b479-56ef4ba15f7e.jpg" class="img-fluid rounded" alt="IVE">
     </div>
 </div>
 
@@ -32,13 +32,13 @@ include "view-header.php";
     <!-- (G)I-DLE -->
     <div class="col-md-6 text-center">
         <h3>(G)I-DLE</h3>
-        <img src="images/gidle.jpg" class="img-fluid rounded" alt="(G)I-DLE">
+        <img src="https://pbs.twimg.com/media/GAPP7tFWYAAcDin?format=jpg&name=4096x4096" class="img-fluid rounded" alt="(G)I-DLE">
     </div>
 
     <!-- NMIXX -->
     <div class="col-md-6 text-center">
         <h3>NMIXX</h3>
-        <img src="images/nmixx.jpg" class="img-fluid rounded" alt="NMIXX">
+        <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/imageedit_1_2679403850.jpg" class="img-fluid rounded" alt="NMIXX">
     </div>
 </div>
 <?php include "view-footer.php"; ?>
