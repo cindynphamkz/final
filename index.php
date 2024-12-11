@@ -47,8 +47,6 @@ include "view-header.php";
     .group-image {
         width: 100%; /* Make images responsive */
         max-width: 300px; /* Ensure consistent width */
-        height: auto; /* Maintain aspect ratio */
-        object-fit: cover; /* Ensures the image fills the frame without distortion */
         border-radius: 10px; /* Optional: Slightly rounded corners */
     }
 </style>
