@@ -15,6 +15,18 @@ function selectAlbums() {
     return $result;
 }
 
+function getAlbumById($albumId) {
+    $conn = get_db_connection();
+    $stmt = $conn->prepare("SELECT * FROM `Albums` WHERE `AlbumID` = ?");
+    $stmt->bind_param("i", $albumId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $album = $result->fetch_assoc();
+    $stmt->close();
+    $conn->close();
+    return $album;
+}
+
 function deleteAlbum($albumId) {
     $conn = get_db_connection();
     $stmt = $conn->prepare("DELETE FROM `Albums` WHERE `AlbumID` = ?");
