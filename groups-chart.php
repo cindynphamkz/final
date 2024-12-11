@@ -1,10 +1,9 @@
 <?php
 require_once("model-groups.php");
 require_once("model-albums.php");
-$pageTitle = "Groups Chart";
+$pageTitle = "Group Chart";
 include "view-header.php";
 
-// Prepare data for chart
 $groups = selectGroups();
 $groupNames = [];
 $albumCounts = [];
@@ -14,30 +13,25 @@ while ($group = $groups->fetch_assoc()) {
     $albumCounts[] = countAlbumsByGroup($group['GroupID']);
 }
 ?>
-<h1>Groups Chart</h1>
-<canvas id="groupsChart" width="400" height="200"></canvas>
+<h1>Group Chart</h1>
+<canvas id="groupChart" width="400" height="200"></canvas>
 
-<!-- Include Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const groupNames = <?php echo json_encode($groupNames); ?>;
-    const albumCounts = <?php echo json_encode($albumCounts); ?>;
-
-    const ctx = document.getElementById('groupsChart').getContext('2d');
+    const ctx = document.getElementById('groupChart').getContext('2d');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: groupNames,
+            labels: <?php echo json_encode($groupNames); ?>,
             datasets: [{
                 label: 'Number of Albums',
-                data: albumCounts,
+                data: <?php echo json_encode($albumCounts); ?>,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
             }]
         },
         options: {
-            responsive: true,
             scales: {
                 y: {
                     beginAtZero: true
