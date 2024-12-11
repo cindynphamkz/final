@@ -42,11 +42,14 @@ include "view-header.php";
     </div>
 </div>
 
-<!-- Add inline CSS or a separate stylesheet -->
+<!-- Add inline CSS or move to a global stylesheet -->
 <style>
     .group-image {
-        width: 100%; /* Make images responsive */
-        max-width: 300px; /* Ensure consistent width */
+        width: 100%; /* Ensure responsiveness */
+        max-width: 300px; /* Set the rectangle width */
+        height: 200px; /* Fixed height to make all images rectangular */
+        object-fit: cover; /* Crops the image while ensuring the center is visible */
+        object-position: center; /* Keeps the image center-focused */
         border-radius: 10px; /* Optional: Slightly rounded corners */
     }
 </style>
