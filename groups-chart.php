@@ -1,31 +1,38 @@
 <?php
-require_once("model-groups.php");
 require_once("model-albums.php");
 $pageTitle = "Group Chart";
 include "view-header.php";
 
-$groups = selectGroups();
+// Fetch album counts by group
+$data = countAlbumsByGroup();
+
+// Prepare data for the chart
 $groupNames = [];
 $albumCounts = [];
-
-while ($group = $groups->fetch_assoc()) {
-    $groupNames[] = $group['Name'];
-    $albumCounts[] = countAlbumsByGroup($group['GroupID']);
+while ($row = $data->fetch_assoc()) {
+    $groupNames[] = $row['GroupName'];
+    $albumCounts[] = $row['AlbumCount'];
 }
 ?>
-<h1>Group Chart</h1>
+<h1 class="text-center my-4">Albums by Group</h1>
 <canvas id="groupChart" width="400" height="200"></canvas>
 
+<!-- Include Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    // Prepare data for the chart
+    const groupNames = <?php echo json_encode($groupNames); ?>;
+    const albumCounts = <?php echo json_encode($albumCounts); ?>;
+
+    // Render the chart
     const ctx = document.getElementById('groupChart').getContext('2d');
-    new Chart(ctx, {
+    const groupChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: <?php echo json_encode($groupNames); ?>,
+            labels: groupNames,
             datasets: [{
                 label: 'Number of Albums',
-                data: <?php echo json_encode($albumCounts); ?>,
+                data: albumCounts,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
