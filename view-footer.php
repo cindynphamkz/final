@@ -1,6 +1,6 @@
 <footer class="bg-light text-center text-lg-start mt-5">
     <div class="footer" style="background-color: #e6d9ff; color: #000; padding: 10px 0;">
-        <p>&copy; 2024 Cindy P. All rights reserved.</p>
+        <p>&copy; 2024 Cindy P.</p>
     </div>
 </footer>
 </div> <!-- Close container -->
