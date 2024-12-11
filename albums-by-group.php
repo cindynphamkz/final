@@ -15,13 +15,13 @@ if ($groupId > 0) {
 
     // Check if the group exists
     if (!$group) {
-        echo "<p class='text-center'>Group not found.</p>";
+        echo "<p class='text-center mt-4'>Group not found.</p>";
         include "view-footer.php";
         exit();
     }
 
-    echo "<h1>Albums by " . htmlspecialchars($group['Name']) . "</h1>";
-    echo "<table class='table'>
+    echo "<h1 class='text-center my-4'>Albums by " . htmlspecialchars($group['Name']) . "</h1>";
+    echo "<div class='table-responsive'><table class='table table-striped'>
             <thead>
                 <tr>
                     <th>Title</th>
@@ -35,25 +35,26 @@ if ($groupId > 0) {
                 <td>" . htmlspecialchars($album['Title']) . "</td>
                 <td>" . htmlspecialchars($album['AlbumType']) . "</td>
                 <td>
-                    <a href='edit-album.php?id=" . $album['AlbumID'] . "' class='btn btn-warning'>Edit</a>
-                    <a href='delete-album.php?id=" . $album['AlbumID'] . "' class='btn btn-danger' onclick='return confirm(\"Are you sure you want to delete this album?\")'>Delete</a>
+                    <a href='edit-album.php?id=" . $album['AlbumID'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                    <a href='delete-album.php?id=" . $album['AlbumID'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Are you sure you want to delete this album?\")'>Delete</a>
                 </td>
               </tr>";
     }
     echo "</tbody>
-        </table>";
+        </table></div>";
 
 } else {
     // No specific group selected; fetch all albums grouped by group
     $groups = selectGroups();
 
-    echo "<h1>Albums by Group</h1>";
+    echo "<h1 class='text-center my-4'>Albums by Group</h1>";
     while ($group = $groups->fetch_assoc()) {
-        echo "<h2>" . htmlspecialchars($group['Name']) . "</h2>";
+        echo "<div class='mt-5'>
+                <h2 class='text-primary'>" . htmlspecialchars($group['Name']) . "</h2>";
         $albums = selectAlbumsByGroup($group['GroupID']);
 
         if ($albums->num_rows > 0) {
-            echo "<table class='table'>
+            echo "<div class='table-responsive'><table class='table table-striped'>
                     <thead>
                         <tr>
                             <th>Title</th>
@@ -68,10 +69,11 @@ if ($groupId > 0) {
                       </tr>";
             }
             echo "</tbody>
-                </table>";
+                </table></div>";
         } else {
-            echo "<p>No albums found for this group.</p>";
+            echo "<p class='text-muted'>No albums found for this group.</p>";
         }
+        echo "</div>";
     }
 }
 
