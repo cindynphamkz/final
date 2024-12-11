@@ -5,8 +5,8 @@ include "view-header.php";
 <h1 class="text-center mt-4">Welcome to KPOP Data!</h1>
 <p class="text-center">
     This website allows you to explore various K-pop groups and their albums. This site focuses on five popular girl groups, each from different companies. 
-    You can browse through group details, albums, view albums by specific groups, and visualize data using charts. Use the navigation bar above to explore! 
-   <br>
+    <br>You can browse through group details, albums, view albums by specific groups, and visualize data using charts. Use the navigation bar above to explore! 
+   <br><br>
     ***Feel free to search up each groups discography/albums and add more of their work to have fun with this interactive website ( ദ്ദി ˙ᗜ˙ )!! ***
 </p>
 
