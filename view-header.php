@@ -6,24 +6,38 @@
     <title><?php echo isset($pageTitle) ? $pageTitle : 'K-pop Hub'; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Set light pastel purple background */
+        /* Background Colors */
         body {
-            background-color: #f9f2ff;
+            background-color: #f9f2ff; /* Very light pastel purple */
             color: #000; /* Black text */
         }
-        /* Add padding and limit max-width for better spacing */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        .navbar, .footer {
+            background-color: #fffdeb; /* Very light pastel yellow */
         }
-        /* Center navbar links */
+        .container {
+            max-width: 1200px; /* Limit the width of the content */
+            margin: 20px auto; /* Center content and add space on top/bottom */
+            padding: 20px; /* Add padding around the edges */
+            background-color: #fffdeb; /* Very light pastel yellow background for content */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        /* Style navbar links */
         .navbar-nav .nav-link {
             text-align: center;
+            color: #000 !important; /* Ensure black text for navbar links */
         }
-        /* Style table headers */
+
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        /* Table header styling */
         table thead th {
-            color: #000;
+            color: #000; /* Black text */
         }
     </style>
 </head>
@@ -53,6 +67,3 @@
                 </ul>
             </div>
         </nav>
-    </div>
-</body>
-</html>
