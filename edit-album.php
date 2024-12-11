@@ -11,7 +11,6 @@ if (isset($_GET['id'])) {
         $albumType = $_POST['albumType'];
         $groupId = $_POST['groupid'];
 
-        // Validate inputs
         if (!empty($title) && !empty($albumType) && !empty($groupId)) {
             updateAlbum($albumId, $title, $albumType, $groupId);
             header("Location: view-albums.php");
