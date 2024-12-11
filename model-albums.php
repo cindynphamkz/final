@@ -34,7 +34,11 @@ function selectAlbumsByGroup($groupId) {
 function countAlbumsByGroup() {
     $conn = get_db_connection();
     $stmt = $conn->prepare("
-        SELECT `Groups`.`Name` AS GroupName, COUNT(`Albums`.`AlbumID`) AS AlbumCount
+        SELECT 
+            `Groups`.`Name` AS GroupName,
+            SUM(CASE WHEN `Albums`.`AlbumType` = 'Full Album' THEN 1 ELSE 0 END) AS FullAlbumCount,
+            SUM(CASE WHEN `Albums`.`AlbumType` = 'Mini Album' THEN 1 ELSE 0 END) AS MiniAlbumCount,
+            SUM(CASE WHEN `Albums`.`AlbumType` = 'Single Album' THEN 1 ELSE 0 END) AS SingleAlbumCount
         FROM `Groups`
         LEFT JOIN `Albums` ON `Groups`.`GroupID` = `Albums`.`GroupID`
         GROUP BY `Groups`.`Name`
